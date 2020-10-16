@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 
 import AppNavbar from './component/AppNavbar'
@@ -12,19 +12,27 @@ import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import { loadUser } from './actions/authActions'
 
 import store from './store';
 
-function App() {
-  return (
-    <Provider store={store}>
-      <div className="App">
-        <AppNavbar />
-        <ShoppingList />
-      </div>
 
-    </Provider>
-  );
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(loadUser())
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="App">
+          <AppNavbar />
+          <ShoppingList />
+        </div>
+
+      </Provider>
+    );
+  }
+
 }
 
 export default App;

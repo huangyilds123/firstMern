@@ -13,6 +13,6 @@ const ItemSchema = new Schema({
         default: Date.now
 
     }
-}, { collection: 'users' })
+}, { collection: 'items' })
 
 module.exports = Item = mongoose.model('item', ItemSchema)
